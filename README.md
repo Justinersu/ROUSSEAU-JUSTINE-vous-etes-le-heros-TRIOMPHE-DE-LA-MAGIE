@@ -1,4 +1,4 @@
-# Triomphe de la magie
+![Logo](./assets/logo.png)
 
 [Développement web - Projet vous êtes le héros](https://smnarnold.com/projets/vous-etes-le-heros)
 
