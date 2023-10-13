@@ -29,7 +29,7 @@ const chapters = {
         description: 'Le troll s\'apprête à attaquer.',
         image: './assets/images/attaque.jpg',
         boutons: [
-            {titre: 'Rester en retrait alors que vos compagnons prennent les armes.', destination: 'mort'}, 
+            {titre: 'Rester en retrait alors que vos compagnons prennent les armes', destination: 'mort'}, 
             {titre: 'Préparer son arme', destination: 'sacoche'}
         ]
     },
@@ -94,7 +94,7 @@ const chapters = {
     // Choix du baton magique
     sortBaton: {
         titre: 'Félicitations!',
-        description: 'Le coup s\'abat sur vos compagnons. Vous ne pouvez pas achever le troll seul et mourrez.',
+        description: 'Vous achevez le troll avec succès et trouvez une montagne de trésors au fond de la caverne.',
         image: './assets/images/felicitations.jpg',
         boutons: [
             {titre: 'Recommencer', destination: 'debut'}
