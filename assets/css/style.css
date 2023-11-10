@@ -55,7 +55,7 @@ body {
     font-size: 1.5em;
 }
 
-.image {
+img, video {
     width: 100%;
 }
 
