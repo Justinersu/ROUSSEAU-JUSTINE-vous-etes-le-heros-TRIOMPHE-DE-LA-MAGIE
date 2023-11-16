@@ -3,7 +3,7 @@ const chapters = {
         titre: 'En route!',
         description: 'Vous et vos compagnons entrez dans une caverne à la recherche d\'aventures.',
         image: './assets/images/debut.jpg',
-        audio: ' ',
+        audio: '',
         boutons: [
             {titre: 'Aller de l\'avant', destination: 'troll'}, 
             {titre: 'Rebrousser chemin', destination: 'abandon'}
@@ -14,9 +14,7 @@ const chapters = {
         description: 'Vous abandonnez. Aucun récits ne seronts écrits sur vous.',
         image: './assets/images/abandon.jpg',
         audio: './assets/audio/fail.mp3',
-        boutons: [
-            {titre: 'Recommencer', destination: 'debut'}
-        ]
+        boutons: ''
     },
     troll: {
         titre: 'Rencontre inatendue',
@@ -43,9 +41,7 @@ const chapters = {
         description: 'Vous et vos compagnons mourrez au combat.',
         image: './assets/images/mort.jpg',
         audio: './assets/audio/fail.mp3',
-        boutons: [
-            {titre: 'Recommencer', destination: 'debut'}
-        ]
+        boutons: ''
     },
     sacoche:  {
         titre: 'L\'équipement du sorcier',
@@ -100,9 +96,7 @@ const chapters = {
         description: 'Le coup s\'abat sur vos compagnons. Vous ne pouvez pas achever le troll seul et mourrez.',
         image: './assets/images/seul.jpg',
         audio: './assets/audio/fail.mp3',
-        boutons: [
-            {titre: 'Recommencer', destination: 'debut'}
-        ]
+        boutons: ''
     },
     // Choix du baton magique
     sortBaton: {
@@ -110,9 +104,7 @@ const chapters = {
         description: 'Vous achevez le troll avec succès et trouvez une montagne de trésors au fond de la caverne.',
         image: './assets/images/felicitations.jpg',
         audio: './assets/audio/victoire.mp3',
-        boutons: [
-            {titre: 'Recommencer', destination: 'debut'}
-        ]
+        boutons: ''
     },
     // Choix du manuscrit ancien
     sort: {
@@ -120,14 +112,14 @@ const chapters = {
         description: 'Le sort du manuscrit n\'arrive pas à contrer l\'arme du troll. Vous mourrez.',
         image: './assets/images/mort.jpg',
         audio: './assets/audio/fail.mp3',
-        boutons: [
-            {titre: 'Recommencer', destination: 'debut'}
-        ]
+        boutons: ''
     }
 }
 
-
 function goToChapter(chapter) {
+    //Sauvegarder clé du chapitre
+    localStorage.setItem('chapter', chapter);
+
     //Enlève les boutons du div .boutons
     const boutons = document.querySelector('.boutons');
     while (boutons.firstChild) {
@@ -160,21 +152,37 @@ function goToChapter(chapter) {
         video.setAttributeNode(document.createAttribute('loop'));
         video.play();
     } else {
-        console.log('Pas de vidéos pour ce chapitre');
         const image = document.createElement('img');
         image.src = chapters[chapter].image;
         document.querySelector('.media').innerHTML = '';
         document.querySelector('.media').appendChild(image);
     }
 
-    //Twist
+    //Twist et Localstorage
     if (chapter == 'baton') {
-        chapters['coup'].boutons[0].destination = 'sortBaton';
+        localStorage.setItem('final', chapter);
     }
     if (chapter == 'debut') {
+        localStorage.setItem('final', chapter);
+    }
+    if (localStorage.getItem('final') === 'debut') {
         chapters['coup'].boutons[0].destination = 'sort';
+    } 
+    if (localStorage.getItem('final') === 'baton') {
+        chapters['coup'].boutons[0].destination = 'sortBaton';
     }
 }
 
-//Va au premier chapitre
-goToChapter('debut');
+//Bouton réinitialiser
+const reinitialiser = document.querySelector('.recommencer');
+reinitialiser.addEventListener('click', function() {
+    localStorage.clear();
+    goToChapter('debut');
+});
+
+//Charger la dernière page visitée si localstorage du chapitre existe
+if (localStorage.getItem('chapter') === null) {
+    goToChapter('debut');
+} else {
+    goToChapter(localStorage.getItem('chapter'));
+}
