@@ -100,3 +100,57 @@ button:hover {
     right: 20px;
     border: 4px solid var(--jaune);
 }
+
+#volume {
+    background-image: url('../images/volume_on.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+#checkbox {
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+}
+
+#checkbox:hover {
+    cursor: pointer;
+}
+
+/*--------Responsive--------*/
+@media screen and (max-width: 500px) {
+    .logo {
+        font-size: 1em;
+    }
+    .titre {
+        font-size: 1em;
+    }
+    .description {
+        font-size: 0.9em;
+    }
+    body {
+        background-color: var(--violet);
+    }
+    #jeu {
+        background-color: transparent;
+        border: none;
+        padding-bottom: 20%;
+        height: 80%;
+    }
+    .boutons {
+        flex-direction: column;
+    }
+    button {
+        font-size: 0.8em;
+        margin: 0.5em 0 0.5em 0;
+    }
+    #volume, .recommencer {
+        top: auto;
+        bottom: 20px;
+    }
+}

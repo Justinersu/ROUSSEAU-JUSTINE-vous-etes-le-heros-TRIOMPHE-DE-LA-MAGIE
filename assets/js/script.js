@@ -116,9 +116,20 @@ const chapters = {
     }
 }
 
+//Variables pour les éléments volume du html
+const checkbox = document.querySelector('#checkbox');
+const imgVolume = document.querySelector('#volume');
+
 function goToChapter(chapter) {
     //Sauvegarder clé du chapitre
     localStorage.setItem('chapter', chapter);
+    
+    //Volume off si localStorage muted
+    if (localStorage.getItem('audio') === 'muted') {
+        checkbox.checked = true;
+        document.querySelector('audio').muted = true;
+        imgVolume.setAttribute("style", `background-image: url('./assets/images/volume_off.png');`);
+    } 
 
     //Enlève les boutons du div .boutons
     const boutons = document.querySelector('.boutons');
@@ -178,6 +189,20 @@ const reinitialiser = document.querySelector('.recommencer');
 reinitialiser.addEventListener('click', function() {
     localStorage.clear();
     goToChapter('debut');
+});
+
+//Bouton mute volume
+checkbox.addEventListener('change', function() {
+    if(this.checked) {
+        document.querySelector('audio').muted = true;
+        imgVolume.setAttribute("style", `background-image: url('./assets/images/volume_off.png');`);
+        localStorage.setItem('audio', 'muted');
+    }
+    else{
+        document.querySelector('audio').muted = false;
+        imgVolume.setAttribute("style", `background-image: url('./assets/images/volume_on.png');`);
+        localStorage.setItem('audio', 'on')
+    }
 });
 
 //Charger la dernière page visitée si localstorage du chapitre existe
