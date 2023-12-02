@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Justine Rousseau"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Justine Rousseau" />
     <title>Triomphe de la magie</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div id="jeu">
-            <h1 class="logo">Triomphe de la magie</h1>
-            <h2 class="titre">Incenderat autem</h2>
-            <p class="description">Audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus</p>
-            <div class="media"></div>
-            <div class="boutons">
-                <button>Xpediendum</button>
-                <button>Quod orsi</button>
-                <button>Incitans</button>
-            </div>
-            <audio autoplay></audio>
+      <div id="jeu">
+        <h1 class="logo">Triomphe de la magie</h1>
+        <h2 class="titre">Incenderat autem</h2>
+        <p class="description">
+          Audaces usque ad insaniam homines ad haec, quae nefariis egere
+          conatibus
+        </p>
+        <div class="media"></div>
+        <div class="boutons">
+          <button class="choix">Xpediendum</button>
+          <button class="choix">Quod orsi</button>
+          <button class="choix">Incitans</button>
         </div>
+        <audio autoplay></audio>
+      </div>
     </div>
-    <button class="recommencer">Recommencer</button>
-    <div id="volume">
+    <div class="outils">
+      <button class="recommencer"><span>Recommencer</span></button>
+      <div id="volume">
         <input id="checkbox" type="checkbox" />
+      </div>
     </div>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>

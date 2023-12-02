@@ -144,7 +144,8 @@ function goToChapter(chapter) {
         document.querySelector('.description').innerText = chapters[chapter].description;
         for (let i = 0; i < chapters[chapter].boutons.length; i++) {
             const nouveauBtn = document.createElement('button'); 
-            nouveauBtn.textContent = chapters[chapter].boutons[i].titre; 
+            nouveauBtn.setAttribute('class', 'choix');
+            nouveauBtn.textContent = chapters[chapter].boutons[i].titre;
             nouveauBtn.addEventListener('click', () => { 
                 goToChapter(chapters[chapter].boutons[i].destination); 
             }); 
